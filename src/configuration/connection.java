@@ -16,7 +16,7 @@ public class connection {
  
     public Connection getConnection(){  
             try{
-                    con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/libray book tracker", "root", "");
+                    con = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/book_tracker", "root", "");
                 }catch(Exception e){
                     System.out.println(e.getMessage());
                     }
