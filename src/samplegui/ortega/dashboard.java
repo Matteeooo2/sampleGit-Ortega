@@ -29,6 +29,8 @@ public class dashboard extends javax.swing.JFrame {
         reportpanel = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         header = new javax.swing.JPanel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel4 = new javax.swing.JLabel();
         maindesk = new javax.swing.JDesktopPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -108,20 +110,22 @@ public class dashboard extends javax.swing.JFrame {
         navbar.setBounds(0, 0, 130, 380);
 
         header.setBackground(new java.awt.Color(255, 244, 194));
+        header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        javax.swing.GroupLayout headerLayout = new javax.swing.GroupLayout(header);
-        header.setLayout(headerLayout);
-        headerLayout.setHorizontalGroup(
-            headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 590, Short.MAX_VALUE)
-        );
-        headerLayout.setVerticalGroup(
-            headerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 30, Short.MAX_VALUE)
-        );
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/samplegui/ortega/icons8-engineering-32.png"))); // NOI18N
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel4MouseEntered(evt);
+            }
+        });
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 50, 40));
+
+        header.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 0, 50, 40));
 
         jPanel1.add(header);
-        header.setBounds(130, 0, 590, 30);
+        header.setBounds(130, 0, 590, 40);
 
         maindesk.setBackground(new java.awt.Color(229, 211, 179));
         maindesk.setPreferredSize(new java.awt.Dimension(760, 420));
@@ -144,7 +148,7 @@ public class dashboard extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 721, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 718, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,6 +198,10 @@ public class dashboard extends javax.swing.JFrame {
     
     }//GEN-LAST:event_dashpanelMouseClicked
 
+    private void jLabel4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseEntered
+    
+    }//GEN-LAST:event_jLabel4MouseEntered
+
     /**
      * @param args the command line arguments
      */
@@ -235,7 +243,9 @@ public class dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JDesktopPane maindesk;
     private javax.swing.JPanel navbar;
     private javax.swing.JPanel reportpanel;

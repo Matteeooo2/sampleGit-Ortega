@@ -40,6 +40,7 @@ public class dashboardpage extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
 
+        setPreferredSize(new java.awt.Dimension(760, 420));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel4.setBackground(new java.awt.Color(229, 211, 179));
