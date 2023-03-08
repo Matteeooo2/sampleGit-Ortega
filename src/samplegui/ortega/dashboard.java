@@ -29,7 +29,7 @@ public class dashboard extends javax.swing.JFrame {
         reportpanel = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         header = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
+        settings = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         maindesk = new javax.swing.JDesktopPane();
 
@@ -112,7 +112,19 @@ public class dashboard extends javax.swing.JFrame {
         header.setBackground(new java.awt.Color(255, 244, 194));
         header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        settings.setBackground(new java.awt.Color(255, 244, 194));
+        settings.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                settingsMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                settingsMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                settingsMouseExited(evt);
+            }
+        });
+        settings.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/samplegui/ortega/icons8-engineering-32.png"))); // NOI18N
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -120,12 +132,12 @@ public class dashboard extends javax.swing.JFrame {
                 jLabel4MouseEntered(evt);
             }
         });
-        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 50, 40));
+        settings.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 0, 30, 30));
 
-        header.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 0, 50, 40));
+        header.add(settings, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 0, 50, 40));
 
         jPanel1.add(header);
-        header.setBounds(130, 0, 590, 40);
+        header.setBounds(130, 0, 590, 30);
 
         maindesk.setBackground(new java.awt.Color(229, 211, 179));
         maindesk.setPreferredSize(new java.awt.Dimension(760, 420));
@@ -202,6 +214,18 @@ public class dashboard extends javax.swing.JFrame {
     
     }//GEN-LAST:event_jLabel4MouseEntered
 
+    private void settingsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsMouseClicked
+    
+    }//GEN-LAST:event_settingsMouseClicked
+
+    private void settingsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsMouseEntered
+    settings.setBackground(bodycolor);
+    }//GEN-LAST:event_settingsMouseEntered
+
+    private void settingsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_settingsMouseExited
+    settings.setBackground(headcolor);
+    }//GEN-LAST:event_settingsMouseExited
+
     /**
      * @param args the command line arguments
      */
@@ -245,10 +269,10 @@ public class dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JDesktopPane maindesk;
     private javax.swing.JPanel navbar;
     private javax.swing.JPanel reportpanel;
+    private javax.swing.JPanel settings;
     private javax.swing.JPanel userpanel;
     // End of variables declaration//GEN-END:variables
 }
