@@ -1,7 +1,11 @@
 
 package internal;
 
+import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 import java.awt.Color;
+import javax.swing.plaf.basic.BasicInternalFrameUI;
+import samplegui.ortega.loginForm;
 
 
 public class settingsPage extends javax.swing.JInternalFrame {
@@ -9,6 +13,10 @@ public class settingsPage extends javax.swing.JInternalFrame {
 
     public settingsPage() {
         initComponents();
+        
+        this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
+        BasicInternalFrameUI bi = (BasicInternalFrameUI)this.getUI();
+        bi.setNorthPane(null);
     }
 
     Color navcolor = new Color(155, 119, 84);
@@ -38,10 +46,10 @@ public class settingsPage extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
 
-        setPreferredSize(new java.awt.Dimension(760, 240));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel4.setBackground(new java.awt.Color(229, 211, 179));
+        jPanel4.setPreferredSize(new java.awt.Dimension(760, 420));
         jPanel4.setLayout(null);
 
         jPanel1.setBackground(new java.awt.Color(155, 119, 84));
@@ -56,7 +64,7 @@ public class settingsPage extends javax.swing.JInternalFrame {
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 80, 80));
 
         jPanel4.add(jPanel1);
-        jPanel1.setBounds(440, 0, 130, 140);
+        jPanel1.setBounds(450, 0, 130, 140);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("ACCOUNT SETTINGS");
@@ -83,13 +91,17 @@ public class settingsPage extends javax.swing.JInternalFrame {
         jPanel4.add(jLabel14);
         jLabel14.setBounds(10, 110, 300, 20);
 
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 140));
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 140));
 
         jPanel5.setBackground(new java.awt.Color(255, 244, 194));
+        jPanel5.setPreferredSize(new java.awt.Dimension(760, 420));
         jPanel5.setLayout(null);
 
         logout.setBackground(new java.awt.Color(155, 119, 84));
         logout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoutMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 logoutMouseEntered(evt);
             }
@@ -108,7 +120,7 @@ public class settingsPage extends javax.swing.JInternalFrame {
         logout.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 110, 20));
 
         jPanel5.add(logout);
-        logout.setBounds(400, 60, 130, 120);
+        logout.setBounds(410, 60, 130, 120);
 
         profile.setBackground(new java.awt.Color(155, 119, 84));
         profile.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -130,7 +142,7 @@ public class settingsPage extends javax.swing.JInternalFrame {
         profile.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 80, 80));
 
         jPanel5.add(profile);
-        profile.setBounds(80, 60, 130, 120);
+        profile.setBounds(90, 60, 130, 120);
 
         reports.setBackground(new java.awt.Color(155, 119, 84));
         reports.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -152,36 +164,46 @@ public class settingsPage extends javax.swing.JInternalFrame {
         reports.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 110, 20));
 
         jPanel5.add(reports);
-        reports.setBounds(240, 60, 130, 120);
+        reports.setBounds(250, 60, 130, 120);
 
-        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 114, 600, 240));
+        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 134, 640, 260));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void logoutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseEntered
-    logout.setBackground(bodycolor);
-    }//GEN-LAST:event_logoutMouseEntered
-
-    private void logoutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseExited
-    logout.setBackground(navcolor);
-    }//GEN-LAST:event_logoutMouseExited
-
-    private void profileMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profileMouseEntered
-    profile.setBackground(bodycolor);
-    }//GEN-LAST:event_profileMouseEntered
-
-    private void profileMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profileMouseExited
-    profile.setBackground(navcolor);
-    }//GEN-LAST:event_profileMouseExited
+    private void reportsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reportsMouseExited
+        reports.setBackground(navcolor);
+    }//GEN-LAST:event_reportsMouseExited
 
     private void reportsMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reportsMouseEntered
-    reports.setBackground(bodycolor);
+        reports.setBackground(bodycolor);
     }//GEN-LAST:event_reportsMouseEntered
 
-    private void reportsMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reportsMouseExited
-    reports.setBackground(navcolor);
-    }//GEN-LAST:event_reportsMouseExited
+    private void profileMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profileMouseExited
+        profile.setBackground(navcolor);
+    }//GEN-LAST:event_profileMouseExited
+
+    private void profileMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profileMouseEntered
+        profile.setBackground(bodycolor);
+    }//GEN-LAST:event_profileMouseEntered
+
+    private void logoutMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseExited
+        logout.setBackground(navcolor);
+    }//GEN-LAST:event_logoutMouseExited
+
+    private void logoutMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseEntered
+        logout.setBackground(bodycolor);
+    }//GEN-LAST:event_logoutMouseEntered
+
+    private void logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseClicked
+    JFrame mainFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
+    mainFrame.dispose();
+    
+    loginForm lf = new loginForm();
+    lf.setVisible(true);
+    
+   
+    }//GEN-LAST:event_logoutMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

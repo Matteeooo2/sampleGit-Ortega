@@ -40,7 +40,6 @@ public class dashboardpage extends javax.swing.JInternalFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
 
-        setPreferredSize(new java.awt.Dimension(760, 420));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel4.setBackground(new java.awt.Color(229, 211, 179));
@@ -49,14 +48,14 @@ public class dashboardpage extends javax.swing.JInternalFrame {
         jPanel1.setBackground(new java.awt.Color(155, 119, 84));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel4.add(jPanel1);
-        jPanel1.setBounds(450, 0, 120, 120);
+        jPanel1.setBounds(460, 0, 120, 120);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("LIBRARY BOOK TRACKER");
         jPanel4.add(jLabel1);
         jLabel1.setBounds(10, 10, 300, 30);
 
-        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 600, 120));
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, 120));
 
         jPanel5.setBackground(new java.awt.Color(255, 244, 194));
         jPanel5.setLayout(null);
@@ -72,6 +71,7 @@ public class dashboardpage extends javax.swing.JInternalFrame {
         });
         settings.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/internal/icons8-gear-64.png"))); // NOI18N
         settings.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 70, 70));
 
@@ -81,7 +81,7 @@ public class dashboardpage extends javax.swing.JInternalFrame {
         settings.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 110, 20));
 
         jPanel5.add(settings);
-        settings.setBounds(450, 50, 130, 120);
+        settings.setBounds(480, 70, 130, 120);
 
         users.setBackground(new java.awt.Color(155, 119, 84));
         users.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -94,8 +94,9 @@ public class dashboardpage extends javax.swing.JInternalFrame {
         });
         users.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/internal/icons8-select-users-64.png"))); // NOI18N
-        users.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 80, 80));
+        users.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 70, 80));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -103,7 +104,7 @@ public class dashboardpage extends javax.swing.JInternalFrame {
         users.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 110, 20));
 
         jPanel5.add(users);
-        users.setBounds(30, 50, 130, 120);
+        users.setBounds(30, 70, 130, 120);
 
         books.setBackground(new java.awt.Color(155, 119, 84));
         books.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -116,8 +117,9 @@ public class dashboardpage extends javax.swing.JInternalFrame {
         });
         books.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/internal/icons8-books-64.png"))); // NOI18N
-        books.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 80, 70));
+        books.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 70, 70));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -125,7 +127,7 @@ public class dashboardpage extends javax.swing.JInternalFrame {
         books.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 110, 20));
 
         jPanel5.add(books);
-        books.setBounds(170, 50, 130, 120);
+        books.setBounds(180, 70, 130, 120);
 
         reports.setBackground(new java.awt.Color(155, 119, 84));
         reports.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -138,8 +140,9 @@ public class dashboardpage extends javax.swing.JInternalFrame {
         });
         reports.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/internal/icons8-reports-58.png"))); // NOI18N
-        reports.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 70, 70));
+        reports.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 20, 50, 70));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -147,9 +150,9 @@ public class dashboardpage extends javax.swing.JInternalFrame {
         reports.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 90, 110, 20));
 
         jPanel5.add(reports);
-        reports.setBounds(310, 50, 130, 120);
+        reports.setBounds(330, 70, 130, 120);
 
-        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 114, 600, 240));
+        getContentPane().add(jPanel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 114, 650, 280));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
