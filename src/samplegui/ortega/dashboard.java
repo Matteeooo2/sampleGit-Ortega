@@ -10,8 +10,12 @@ public class dashboard extends javax.swing.JFrame {
 
     public dashboard() {
         initComponents();
+        
+        
     }
     
+    studentForm stf = new studentForm();
+        
     Color navcolor = new Color(155, 119, 84);
     Color headcolor = new Color(255, 244, 194);
     Color bodycolor = new Color(229, 211, 179);
@@ -89,6 +93,9 @@ public class dashboard extends javax.swing.JFrame {
 
         reportpanel.setBackground(new java.awt.Color(155, 119, 84));
         reportpanel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                reportpanelMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 reportpanelMouseEntered(evt);
             }
@@ -277,6 +284,10 @@ public class dashboard extends javax.swing.JFrame {
     private void closeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseExited
 
     }//GEN-LAST:event_closeMouseExited
+
+    private void reportpanelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_reportpanelMouseClicked
+    
+    }//GEN-LAST:event_reportpanelMouseClicked
 
     /**
      * @param args the command line arguments

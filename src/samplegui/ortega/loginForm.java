@@ -1,5 +1,6 @@
 package samplegui.ortega;
 
+import internal.registration;
 import java.awt.BasicStroke;
 import java.awt.Color;
 import javax.swing.BorderFactory;
@@ -127,6 +128,11 @@ public class loginForm extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("New User? Click Here to Sign Up!");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
         jPanel3.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 280, 220, 40));
 
         minimize.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -213,6 +219,12 @@ public class loginForm extends javax.swing.JFrame {
     private void closeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseExited
     
     }//GEN-LAST:event_closeMouseExited
+
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+    registration rs = new registration();
+    rs.setVisible(true);
+    this.dispose();
+    }//GEN-LAST:event_jLabel3MouseClicked
 
     /**
      * @param args the command line arguments
