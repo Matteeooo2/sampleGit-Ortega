@@ -8,6 +8,14 @@ import java.sql.ResultSet;
 
 
 public class connection {
+
+    public static java.sql.PreparedStatement prepareStatement(String delete_from_tbl_student_WHERE_st_id__) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public static void close() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     Connection con;
     Statement st;
     PreparedStatement pst;

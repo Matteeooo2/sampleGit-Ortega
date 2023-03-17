@@ -29,8 +29,10 @@ public class dashboard extends javax.swing.JFrame {
         navbar = new javax.swing.JPanel();
         userpanel = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         dashpanel = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         reportpanel = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         account = new javax.swing.JPanel();
@@ -64,9 +66,13 @@ public class dashboard extends javax.swing.JFrame {
         userpanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("USER PAGE");
-        userpanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 110, 18));
+        userpanel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 90, 18));
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/samplegui/ortega/icons8-user-36.png"))); // NOI18N
+        userpanel.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 40, 40));
 
         navbar.add(userpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 130, 130, 40));
 
@@ -85,9 +91,13 @@ public class dashboard extends javax.swing.JFrame {
         dashpanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("DASHBOARD");
-        dashpanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 110, 18));
+        dashpanel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, -2, 100, 40));
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/samplegui/ortega/icons8-dashboard-36.png"))); // NOI18N
+        dashpanel.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 50, -1));
 
         navbar.add(dashpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 90, 130, 40));
 
@@ -106,6 +116,7 @@ public class dashboard extends javax.swing.JFrame {
         reportpanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("REPORTS");
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -113,7 +124,7 @@ public class dashboard extends javax.swing.JFrame {
                 jLabel3MouseEntered(evt);
             }
         });
-        reportpanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 110, 18));
+        reportpanel.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 70, 18));
 
         navbar.add(reportpanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 130, 40));
 
@@ -132,6 +143,7 @@ public class dashboard extends javax.swing.JFrame {
         account.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("ACCOUNT");
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -139,7 +151,7 @@ public class dashboard extends javax.swing.JFrame {
                 jLabel6MouseEntered(evt);
             }
         });
-        account.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 11, 110, 18));
+        account.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 80, 18));
 
         navbar.add(account, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 210, 130, 40));
 
@@ -332,6 +344,8 @@ public class dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JDesktopPane maindesk;

@@ -1,12 +1,16 @@
 
 package internal;
 
+import configuration.connection;
 import configuration.dbconnector;
 import java.awt.Color;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.TableModel;
 import net.proteanit.sql.DbUtils;
 import samplegui.ortega.sform;
 import samplegui.ortega.studentForm;
@@ -16,6 +20,7 @@ public class userPage extends javax.swing.JInternalFrame {
 
     public userPage() {
         initComponents();
+        displayData();
         
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0,0,0,0));
         BasicInternalFrameUI bi = (BasicInternalFrameUI)this.getUI();
@@ -25,6 +30,17 @@ public class userPage extends javax.swing.JInternalFrame {
         search.setBackground(new Color(255,244,194));
     }
     
+
+    
+    public void clear(){
+        s_id.setText("");
+        s_name.setText("");
+        s_dept.setText("");
+        s_contact.setText("");
+        s_address.setText("");
+        s_status.setText("");
+       
+    }
     public void displayData(){
         
         
@@ -74,15 +90,24 @@ public class userPage extends javax.swing.JInternalFrame {
         s_status = new javax.swing.JTextField();
         display = new javax.swing.JButton();
         save = new javax.swing.JButton();
+        deleteButton = new javax.swing.JButton();
+        clear = new javax.swing.JButton();
+        s_id = new javax.swing.JTextField();
+        update = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(656, 428));
 
         jPanel1.setBackground(new java.awt.Color(255, 244, 194));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        student_table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                student_tableMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(student_table);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 420, 260));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 430, 260));
 
         jPanel2.setBackground(new java.awt.Color(155, 119, 84));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -138,7 +163,7 @@ public class userPage extends javax.swing.JInternalFrame {
         search.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         search.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         search.setOpaque(false);
-        jPanel1.add(search, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 60, 150, 30));
+        jPanel1.add(search, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 60, 30, 30));
 
         search1.setBackground(new java.awt.Color(155, 119, 84));
         search1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -157,7 +182,7 @@ public class userPage extends javax.swing.JInternalFrame {
         jLabel5.setText("SEARCH");
         search1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 30));
 
-        jPanel1.add(search1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 60, 70, 30));
+        jPanel1.add(search1, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 60, 70, 30));
 
         add.setBackground(new java.awt.Color(155, 119, 84));
         add.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -180,11 +205,11 @@ public class userPage extends javax.swing.JInternalFrame {
         add.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 5, 60, 20));
 
         jPanel1.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 70, 30));
-        jPanel1.add(s_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 160, 30));
-        jPanel1.add(s_dept, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 160, 30));
-        jPanel1.add(s_address, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 160, 30));
-        jPanel1.add(s_contact, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 160, 30));
-        jPanel1.add(s_status, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 160, 30));
+        jPanel1.add(s_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 160, 30));
+        jPanel1.add(s_dept, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 160, 30));
+        jPanel1.add(s_address, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 160, 30));
+        jPanel1.add(s_contact, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 160, 30));
+        jPanel1.add(s_status, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 300, 160, 30));
 
         display.setText("Display");
         display.addActionListener(new java.awt.event.ActionListener() {
@@ -192,7 +217,7 @@ public class userPage extends javax.swing.JInternalFrame {
                 displayActionPerformed(evt);
             }
         });
-        jPanel1.add(display, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 320, -1, -1));
+        jPanel1.add(display, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 70, -1, -1));
 
         save.setText("Save");
         save.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -205,7 +230,47 @@ public class userPage extends javax.swing.JInternalFrame {
                 saveActionPerformed(evt);
             }
         });
-        jPanel1.add(save, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 70, -1));
+        jPanel1.add(save, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 340, 70, -1));
+
+        deleteButton.setText("Delete");
+        deleteButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteButtonMouseClicked(evt);
+            }
+        });
+        deleteButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteButtonActionPerformed(evt);
+            }
+        });
+        jPanel1.add(deleteButton, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 70, 70, -1));
+
+        clear.setText("Clear");
+        clear.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                clearMouseClicked(evt);
+            }
+        });
+        clear.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                clearActionPerformed(evt);
+            }
+        });
+        jPanel1.add(clear, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 340, 70, -1));
+        jPanel1.add(s_id, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 160, 30));
+
+        update.setText("Update");
+        update.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                updateMouseClicked(evt);
+            }
+        });
+        update.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateActionPerformed(evt);
+            }
+        });
+        jPanel1.add(update, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 70, 70, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -266,7 +331,7 @@ public class userPage extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_displayActionPerformed
 
     private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
-        // TODO add your handling code here:
+    
     }//GEN-LAST:event_saveActionPerformed
 
     private void saveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveMouseClicked
@@ -277,12 +342,85 @@ public class userPage extends javax.swing.JInternalFrame {
                 + "VALUES ('"+s_name.getText()+"', '"+s_dept.getText()+"','"+s_address.getText()+"','"+s_contact.getText()+"','"+s_status.getText()+"')");
 
         displayData();
+        clear();
     }//GEN-LAST:event_saveMouseClicked
+
+    private void deleteButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteButtonMouseClicked
+    int rowIndex = student_table.getSelectedRow();
+       
+       
+       if(rowIndex < 0){
+           JOptionPane.showMessageDialog(null, "Please select a data first");
+       }else{
+            TableModel model = student_table.getModel();
+            Object value = model.getValueAt(rowIndex, 0);
+            String id = value.toString();
+             int a=JOptionPane.showConfirmDialog(null,"Are you sure?");  
+                    if(a==JOptionPane.YES_OPTION){  
+                            dbconnector dbc = new dbconnector();
+                            dbc.deleteData(Integer.parseInt(id));
+                            displayData();
+                            clear();
+                     
+                    }    
+       
+       }
+    }//GEN-LAST:event_deleteButtonMouseClicked
+
+    private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_deleteButtonActionPerformed
+
+    private void clearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearMouseClicked
+    clear();
+    }//GEN-LAST:event_clearMouseClicked
+
+    private void clearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_clearActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_clearActionPerformed
+
+    private void student_tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_student_tableMouseClicked
+        int rowIndex = student_table.getSelectedRow();
+        if(rowIndex < 0){
+            
+        }else{
+            TableModel model = student_table.getModel();
+            s_id.setText(""+model.getValueAt(rowIndex,0));
+            s_name.setText(""+model.getValueAt(rowIndex,1));
+            s_dept.setText(""+model.getValueAt(rowIndex,2));
+            s_address.setText(""+model.getValueAt(rowIndex,3));
+            s_contact.setText(""+model.getValueAt(rowIndex,4));
+            s_status.setText(""+model.getValueAt(rowIndex,5));
+            
+        }
+    }//GEN-LAST:event_student_tableMouseClicked
+
+    private void updateMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateMouseClicked
+     dbconnector dbc = new dbconnector();
+        int num = dbc.updateData("UPDATE tbl_students "
+                + "SET s_name = '"+s_name.getText()+"', s_dept='"+s_dept.getText()+"', "
+                        + "s_contact ='"+s_contact.getText()+"', s_status='"+s_status.getText()+"'  " 
+                                + "WHERE s_id = '"+s_id.getText()+"'");
+       
+        if(num == 0){
+           
+        }else{
+           JOptionPane.showMessageDialog(null, "Updated Successfully!");
+           displayData();
+           clear();
+        }
+    }//GEN-LAST:event_updateMouseClicked
+
+    private void updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_updateActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel add;
+    private javax.swing.JButton clear;
     private javax.swing.JPanel delete;
+    private javax.swing.JButton deleteButton;
     private javax.swing.JButton display;
     private javax.swing.JPanel edit;
     private javax.swing.JPanel header;
@@ -297,11 +435,13 @@ public class userPage extends javax.swing.JInternalFrame {
     private javax.swing.JTextField s_address;
     private javax.swing.JTextField s_contact;
     private javax.swing.JTextField s_dept;
+    private javax.swing.JTextField s_id;
     private javax.swing.JTextField s_name;
     private javax.swing.JTextField s_status;
     private javax.swing.JButton save;
     private javax.swing.JTextField search;
     private javax.swing.JPanel search1;
     private javax.swing.JTable student_table;
+    private javax.swing.JButton update;
     // End of variables declaration//GEN-END:variables
 }
