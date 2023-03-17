@@ -1,9 +1,13 @@
 
 package internal;
 
+import configuration.dbconnector;
 import java.awt.Color;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import net.proteanit.sql.DbUtils;
 import samplegui.ortega.sform;
 import samplegui.ortega.studentForm;
 
@@ -20,6 +24,23 @@ public class userPage extends javax.swing.JInternalFrame {
         search.setOpaque(false);
         search.setBackground(new Color(255,244,194));
     }
+    
+    public void displayData(){
+        
+        
+        try{
+            
+        dbconnector dbc = new dbconnector();
+        ResultSet rs = dbc.getData("SELECT *FROM tbl_students");
+        student_table.setModel(DbUtils.resultSetToTableModel(rs));
+                
+        }catch(SQLException ex){
+            System.out.println("Error Message: " +ex);
+            
+        }
+        
+        
+    }
 
     Color navcolor = new Color(155, 119, 84);
     Color headcolor = new Color(255, 244, 194);
@@ -33,7 +54,7 @@ public class userPage extends javax.swing.JInternalFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        student_table = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         delete = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
@@ -46,26 +67,22 @@ public class userPage extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         add = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
+        s_name = new javax.swing.JTextField();
+        s_dept = new javax.swing.JTextField();
+        s_address = new javax.swing.JTextField();
+        s_contact = new javax.swing.JTextField();
+        s_status = new javax.swing.JTextField();
+        display = new javax.swing.JButton();
+        save = new javax.swing.JButton();
 
         setPreferredSize(new java.awt.Dimension(656, 428));
 
         jPanel1.setBackground(new java.awt.Color(255, 244, 194));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(student_table);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 570, 210));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 100, 420, 260));
 
         jPanel2.setBackground(new java.awt.Color(155, 119, 84));
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -88,7 +105,7 @@ public class userPage extends javax.swing.JInternalFrame {
         jLabel2.setText("DELETE");
         delete.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 30));
 
-        jPanel1.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 70, 70, 30));
+        jPanel1.add(delete, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 60, 70, 30));
 
         edit.setBackground(new java.awt.Color(155, 119, 84));
         edit.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -107,13 +124,13 @@ public class userPage extends javax.swing.JInternalFrame {
         jLabel4.setText("EDIT");
         edit.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 30));
 
-        jPanel1.add(edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 70, 70, 30));
+        jPanel1.add(edit, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 60, 70, 30));
 
         header.setBackground(new java.awt.Color(229, 211, 179));
         header.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel1.setText("STUDENTS");
+        jLabel1.setText("MEMBERS");
         header.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 100, 30));
 
         jPanel1.add(header, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 50));
@@ -121,7 +138,7 @@ public class userPage extends javax.swing.JInternalFrame {
         search.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         search.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         search.setOpaque(false);
-        jPanel1.add(search, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 70, 150, 30));
+        jPanel1.add(search, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 60, 150, 30));
 
         search1.setBackground(new java.awt.Color(155, 119, 84));
         search1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -140,7 +157,7 @@ public class userPage extends javax.swing.JInternalFrame {
         jLabel5.setText("SEARCH");
         search1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 70, 30));
 
-        jPanel1.add(search1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 70, 70, 30));
+        jPanel1.add(search1, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 60, 70, 30));
 
         add.setBackground(new java.awt.Color(155, 119, 84));
         add.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -162,7 +179,33 @@ public class userPage extends javax.swing.JInternalFrame {
         jLabel3.setText("ADD");
         add.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(6, 5, 60, 20));
 
-        jPanel1.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, 70, 30));
+        jPanel1.add(add, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 70, 30));
+        jPanel1.add(s_name, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 160, 30));
+        jPanel1.add(s_dept, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 160, 160, 30));
+        jPanel1.add(s_address, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 160, 30));
+        jPanel1.add(s_contact, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, 160, 30));
+        jPanel1.add(s_status, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 280, 160, 30));
+
+        display.setText("Display");
+        display.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                displayActionPerformed(evt);
+            }
+        });
+        jPanel1.add(display, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 320, -1, -1));
+
+        save.setText("Save");
+        save.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                saveMouseClicked(evt);
+            }
+        });
+        save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saveActionPerformed(evt);
+            }
+        });
+        jPanel1.add(save, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 320, 70, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -216,10 +259,31 @@ public class userPage extends javax.swing.JInternalFrame {
     this.dispose();
     }//GEN-LAST:event_addMouseClicked
 
+    private void displayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_displayActionPerformed
+    
+        displayData();
+        
+    }//GEN-LAST:event_displayActionPerformed
+
+    private void saveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_saveActionPerformed
+
+    private void saveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_saveMouseClicked
+    dbconnector dbc = new dbconnector();
+
+        dbc.insertData("INSERT INTO tbl_students (s_name, s_dept, s_address, s_contact, s_status) "
+
+                + "VALUES ('"+s_name.getText()+"', '"+s_dept.getText()+"','"+s_address.getText()+"','"+s_contact.getText()+"','"+s_status.getText()+"')");
+
+        displayData();
+    }//GEN-LAST:event_saveMouseClicked
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel add;
     private javax.swing.JPanel delete;
+    private javax.swing.JButton display;
     private javax.swing.JPanel edit;
     private javax.swing.JPanel header;
     private javax.swing.JLabel jLabel1;
@@ -230,8 +294,14 @@ public class userPage extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField s_address;
+    private javax.swing.JTextField s_contact;
+    private javax.swing.JTextField s_dept;
+    private javax.swing.JTextField s_name;
+    private javax.swing.JTextField s_status;
+    private javax.swing.JButton save;
     private javax.swing.JTextField search;
     private javax.swing.JPanel search1;
+    private javax.swing.JTable student_table;
     // End of variables declaration//GEN-END:variables
 }
